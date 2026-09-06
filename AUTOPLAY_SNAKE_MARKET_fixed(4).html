@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AUTOPLAY SNAKE MARKET</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  color:#fff;
+  background:
+    radial-gradient(circle at top,#164d28 0%,#07150b 48%,#020603 100%);
+}
+
+.market{
+  width:100%;
+  max-width:420px;
+  padding:24px;
+  border-radius:24px;
+  background:rgba(7,20,10,.97);
+  border:1px solid #26753b;
+  box-shadow:0 0 35px rgba(20,255,80,.15);
+}
+
+.logo{
+  text-align:center;
+  font-size:58px;
+}
+
+h1{
+  text-align:center;
+  margin:5px 0;
+  font-size:26px;
+}
+
+.subtitle{
+  text-align:center;
+  color:#8fd69c;
+  margin:8px 0 22px;
+}
+
+.product{
+  padding:20px;
+  border-radius:18px;
+  background:linear-gradient(145deg,#102a17,#08140b);
+  border:1px solid #285c35;
+}
+
+.snake{
+  text-align:center;
+  font-size:75px;
+}
+
+h2{
+  text-align:center;
+  margin:8px 0;
+}
+
+.price{
+  text-align:center;
+  font-size:31px;
+  font-weight:bold;
+  color:#64ff87;
+  margin:15px 0;
+}
+
+.info{
+  text-align:center;
+  color:#b7cabb;
+  font-size:14px;
+  line-height:1.5;
+}
+
+button{
+  width:100%;
+  border:0;
+  border-radius:13px;
+  padding:15px;
+  margin-top:14px;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.buy{
+  background:#27d65b;
+  color:#041008;
+}
+
+.unlock{
+  background:#168cff;
+  color:#fff;
+}
+
+.hidden{
+  display:none;
+}
+
+.message{
+  display:none;
+  margin-top:14px;
+  padding:12px;
+  border-radius:10px;
+  text-align:center;
+  font-size:14px;
+}
+
+.error{
+  display:block;
+  background:rgba(255,60,60,.12);
+  border:1px solid #8f3030;
+  color:#ff9b9b;
+}
+
+.footer{
+  text-align:center;
+  margin-top:18px;
+  color:#63806a;
+  font-size:12px;
+}
+
+/* Premium realistic moving snake — emoji snake elsewhere is unchanged */
+.snake-wrap{position:relative;height:150px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.real-snake{position:relative;width:230px;height:115px;animation:snakeTravel 7s ease-in-out infinite;filter:drop-shadow(0 8px 7px rgba(0,0,0,.45));}
+.snake-body{position:absolute;left:15px;top:47px;width:190px;height:32px;border-radius:55% 45% 48% 52%;background:repeating-linear-gradient(100deg,#173b1c 0 10px,#2f7d38 10px 18px,#173b1c 18px 27px);box-shadow:inset 0 4px 5px rgba(130,220,110,.28),inset 0 -5px 7px rgba(0,0,0,.45);transform:rotate(-8deg);}
+.snake-body:after{content:"";position:absolute;left:8px;right:8px;top:7px;height:4px;border-radius:50%;background:rgba(180,235,150,.25);}
+.snake-head{position:absolute;left:5px;top:34px;width:52px;height:45px;border-radius:55% 65% 48% 48%;background:radial-gradient(circle at 65% 35%,#a6d875 0 3px,transparent 4px),linear-gradient(145deg,#4d9b45,#163c1c 72%);z-index:2;transform:rotate(-14deg);box-shadow:inset -4px -5px 8px rgba(0,0,0,.4),inset 4px 3px 5px rgba(180,240,130,.22);}
+.snake-head:before,.snake-head:after{content:"";position:absolute;top:11px;width:7px;height:7px;border-radius:50%;background:#050805;box-shadow:0 0 0 2px #9bcf70;}
+.snake-head:before{left:12px}.snake-head:after{right:12px}
+.snake-tail{position:absolute;right:0;top:57px;width:48px;height:15px;border-radius:50%;background:#173b1c;transform:rotate(-18deg);transform-origin:left center;}
+.real-snake:after{content:"";position:absolute;left:15px;top:78px;width:205px;height:7px;border-radius:50%;background:rgba(0,0,0,.22);filter:blur(4px);}
+@keyframes snakeTravel{0%{transform:translateX(-125px) rotate(2deg)}22%{transform:translateX(-35px) rotate(-2deg)}48%{transform:translateX(80px) rotate(3deg)}70%{transform:translateX(25px) rotate(-4deg)}100%{transform:translateX(-125px) rotate(2deg)}}
+</style>
+</head>
+
+<body>
+
+<div class="market">
+
+  <div class="logo">🐍</div>
+
+  <h1>AUTOPLAY SNAKE MARKET</h1>
+
+  <div class="subtitle">
+    Premium Autoplay Store
+  </div>
+
+  <div class="product">
+
+    <div class="snake-wrap"><div class="real-snake" aria-label="Animated realistic snake"><span class="snake-head"></span><span class="snake-body"></span><span class="snake-tail"></span></div></div>
+
+    <h2>AUTOPLAY ACCESS</h2>
+
+    <div class="price">₹100</div>
+
+    <div class="info">
+      Pay ₹100 using your UPI application.
+    </div>
+
+    <button class="buy" onclick="startPayment()">
+      💳 BUY FOR ₹100
+    </button>
+
+    <div id="message" class="message"></div>
+
+    <!-- Unlock hidden initially -->
+    <div id="unlockBox" class="hidden">
+
+      <button class="unlock" onclick="openWhatsApp()">
+        🔓 UNLOCK NOW
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="footer">
+    🐍 AUTOPLAY SNAKE MARKET
+  </div>
+
+</div>
+
+<script>
+
+/* =========================
+   PAYMENT SETTINGS
+========================= */
+
+const UPI_ID = "6000149307@ptsbi";
+const PAYEE_NAME = "AUTOPLAY SNAKE MARKET";
+const AMOUNT = "100";
+
+const WHATSAPP_NUMBER = "916001471307";
+
+let upiAppOpened = false;
+let paymentAttemptActive = false;
+
+/* =========================
+   BUY BUTTON
+========================= */
+
+function startPayment(){
+  hideMessage();
+  document.getElementById("unlockBox").classList.add("hidden");
+  upiAppOpened = false;
+  paymentAttemptActive = true;
+
+  const upiUrl =
+    "upi://pay" +
+    "?pa=" + encodeURIComponent(UPI_ID) +
+    "&pn=" + encodeURIComponent(PAYEE_NAME) +
+    "&am=" + encodeURIComponent(AMOUNT) +
+    "&cu=INR";
+
+  let appCheckTimer = null;
+
+  function detectUPIApp(){
+    if(document.visibilityState === "hidden"){
+      /* A UPI/payment app took over the screen.
+         Cancel the fallback timer immediately. */
+      upiAppOpened = true;
+      if(appCheckTimer){
+        clearTimeout(appCheckTimer);
+        appCheckTimer = null;
+      }
+      document.removeEventListener("visibilitychange", detectUPIApp);
+    }
+  }
+
+  document.addEventListener("visibilitychange", detectUPIApp);
+
+  /* Open UPI app */
+  window.location.href = upiUrl;
+
+  /* Show the error only if the page never left the foreground. */
+  appCheckTimer = setTimeout(function(){
+    document.removeEventListener("visibilitychange", detectUPIApp);
+    if(!upiAppOpened && paymentAttemptActive && document.visibilityState === "visible"){
+      paymentAttemptActive = false;
+      showError("No payment app installed in your device");
+    }
+  }, 1800);
+}
+
+/* =========================
+   RETURN FROM UPI APP
+========================= */
+
+document.addEventListener("visibilitychange", function(){
+  if(document.visibilityState === "visible" && upiAppOpened && paymentAttemptActive){
+    /* Returning from a launched UPI app: show Unlock Link.
+       Static HTML cannot independently verify payment success. */
+    document.getElementById("unlockBox").classList.remove("hidden");
+    paymentAttemptActive = false;
+    hideMessage();
+  }
+});
+
+
+/* =========================
+   ERROR MESSAGE
+========================= */
+
+function showError(text){
+
+  const message =
+    document.getElementById("message");
+
+  message.textContent = text;
+  message.className = "message error";
+}
+
+function hideMessage(){
+
+  const message =
+    document.getElementById("message");
+
+  message.textContent = "";
+  message.className = "message";
+}
+
+
+/* =========================
+   WHATSAPP UNLOCK
+========================= */
+
+function openWhatsApp(){
+
+  const text =
+    "Hello, I have completed my AUTOPLAY SNAKE MARKET payment. Please provide my unlock link.";
+
+  const whatsappUrl =
+    "https://wa.me/" +
+    WHATSAPP_NUMBER +
+    "?text=" +
+    encodeURIComponent(text);
+
+  window.location.href = whatsappUrl;
+}
+
+</script>
+
+</body>
+</html>
